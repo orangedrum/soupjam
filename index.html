@@ -272,4 +272,243 @@
     <div id="count-pageviews-piechart"></div>
   </div>
 </body>
+
+<script type="text/javascript">
+
+
+  //********** Configuring Instance of Project **********//
+  var client = new Keen({
+    projectId: "5512fc13672e6c7ecb96c65d",   // String (required always)
+    writeKey: "05066c4ce53b859e2205ee7bbd5db7ea15c2817943ed9ab399f028ed6a78c5cde294bc6666f5b30fc1c027e652facee4a60ba04701bfd65e367fa79ce48d92aba3f3b8f7499d9247f0240d92ef249478e316d904f413501ec082810f4aac3fc64d4154859d7c21c62aafae7031cf6f5e",     // String (required for sending data)
+    readKey: "4543c056ee4dcc133f981ca07c44b9ae2780ba81374dd266dad3808a13ad9fc84ef3616c9748f5d5764fd3f186b70c9db3ed7c8db46903103de2b600ce48441d2a9fd4c627e5b302ad75b12d55cd07852215f018e3072c6a5fe3f9af210e0b53fdf78e47819879dfe3a25402d00da0f4",       // String (required for querying data)
+    protocol: "https",              // String (optional: https | http | auto)
+    host: "api.keen.io/3.0",        // String (optional)
+    requestType: "jsonp"            // String (optional: jsonp, xhr, beacon)
+  });
+
+
+  
+
+  //********** Listeners **********//
+  $( "#distraction_eyewear" ).on( "click", recordEyewear);
+  $( "#distraction_accessories" ).on( "click", recordAccessories);
+  $( "#distraction_popmusic" ).on( "click", recordPop);
+  $( "#distraction_travel" ).on( "click", recordTravel);
+  $( "#distraction_politics" ).on( "click", recordPolitics);
+  $( "#footware_first" ).on( "click", recordFootware);
+  $( "#foodie_first" ).on( "click", recordFoodie);
+  $( "#chairs_first" ).on( "click", recordChairs);
+
+  //********** Goal **********//
+  $( ".cta-goal" ).on( "click", recordGoal);
+
+  //badness
+  $("#big_bad_delete").on("click", deleteKeenData);
+
+
+  
+
+  //********** CTAs as Data Objects **********//
+
+  function recordEyewear(){
+    // Create a data object with the properties you want to send
+    var recordEyewear = {
+      item: "recordEyewear",
+      referrer: document.referrer,
+      keen: {
+        timestamp: new Date().toISOString()
+      }
+    };
+
+    // Send it to the collection
+    client.addEvent("ctas", recordEyewear, function(err, res){
+    });
+  };
+
+  function recordAccessories(){
+    // Create a data object with the properties you want to send
+    var recordAccessories = {
+      item: "recordAccessories",
+      referrer: document.referrer,
+      keen: {
+        timestamp: new Date().toISOString()
+      }
+    };
+
+    // Send it to the collection
+    client.addEvent("ctas", recordAccessories, function(err, res){
+    });
+  };
+
+  function recordPop(){
+    // Create a data object with the properties you want to send
+    var recordPopMusic = {
+      item: "recordPop",
+      referrer: document.referrer,
+      keen: {
+        timestamp: new Date().toISOString()
+      }
+    };
+
+    // Send it to the collection
+    client.addEvent("ctas", recordPop, function(err, res){
+    });
+  };
+
+  function recordTravel(){
+    // Create a data object with the properties you want to send
+    var recordTravel = {
+      item: "recordTravel",
+      referrer: document.referrer,
+      keen: {
+        timestamp: new Date().toISOString()
+      }
+    };
+
+    // Send it to the collection
+    client.addEvent("ctas", recordTravel, function(err, res){
+    });
+  };
+
+  function recordPolitics(){
+    // Create a data object with the properties you want to send
+    var recordPolitics = {
+      item: "recordPolitics",
+      referrer: document.referrer,
+      category: "ctas",
+      keen: {
+        timestamp: new Date().toISOString()
+      }
+    };
+
+    // Send it to the collection
+    client.addEvent("ctas", recordPolitics, function(err, res){
+    });
+  };
+
+  function recordFootware(){
+    // Create a data object with the properties you want to send
+    var recordFootware = {
+      item: "recordFootware",
+      referrer: document.referrer,
+      keen: {
+        timestamp: new Date().toISOString()
+      }
+    };
+
+    // Send it to the collection
+    client.addEvent("ctas", recordFootware, function(err, res){
+    });
+  };
+
+  function recordFoodie(){
+    // Create a data object with the properties you want to send
+    var recordFoodie = {
+      item: "recordFoodie",
+      referrer: document.referrer,
+      keen: {
+        timestamp: new Date().toISOString()
+      }
+    };
+
+    // Send it to the collection
+    client.addEvent("ctas", recordFoodie, function(err, res){
+    });
+  };
+
+  function recordChairs(){
+    // Create a data object with the properties you want to send
+    var recordChairs = {
+      item: "recordChairs",
+      referrer: document.referrer,
+      keen: {
+        timestamp: new Date().toISOString()
+      }
+    };
+
+    // Send it to the collection
+    client.addEvent("ctas", recordChairs, function(err, res){
+    });
+  };
+
+
+  
+
+  //********** Recording Goal **********//
+
+  function recordGoal(){
+    // Create a data object with the properties you want to send
+    var recordFoodie = {
+      item: "recordGoal",
+      referrer: document.referrer,
+      keen: {
+        timestamp: new Date().toISOString()
+      }
+    };
+
+    // Send it to the collection
+    client.addEvent("ctaGoal", recordFoodie, function(err, res){
+    });
+  };
+
+
+
+
+
+
+  //********** Recording Clicks as Group **********//
+  // function recordAllEvents(){
+  //   var multipleEvents = {
+  //     "visitor_clicks": [
+  //       { item: "recordEyewear"},
+  //       { item: "recordAccessories"},
+  //       { item: "recordPop"},
+  //       { item: "recordTravel"},
+  //       { item: "recordPolitics"},
+  //       { item: "recordFootware"},
+  //       { item: "recordFoodie"},
+  //       { item: "recordChairs"}
+  //     ]
+  //   };
+  //   // Send multiple events to several collections
+  //   client.addEvents(visitor_clicks, function(err, res){
+  //     if (err) {
+  //       // there was an error!
+  //     }
+  //     else {
+  //       // see sample response below
+  //     }
+  //   });
+  // };
+
+
+
+
+
+  //********** visualization **********//
+  Keen.ready(function(){
+
+    //goal count//
+    var count = new Keen.Query("count", {
+      eventCollection: "ctaGoal"
+    });
+    client.draw(count, document.getElementById("my_chart"), {
+      chartType: "metric",
+      title: "Total Times Goal Was Hit",
+      colors: ["#49c5b1"]
+    });
+
+
+    //pie chart test//
+    var pie_clicks = new Keen.Query("count", {
+      eventCollection: "ctas",
+      groupBy: "item"
+    });
+    client.draw(pie_clicks, document.getElementById("count-pageviews-piechart"), {
+      chartType: "piechart",
+      title: "Clicks on CTAs"
+    });
+  
+  });
+</script>
 </html>
