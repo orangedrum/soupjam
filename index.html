@@ -276,11 +276,11 @@
 <script type="text/javascript">
 
 
-  //********** Configuring Instance of Project **********//
+    //********** Configuring Instance of Project **********//
   var client = new Keen({
-    projectId: "5512fc13672e6c7ecb96c65d",   // String (required always)
-    writeKey: "05066c4ce53b859e2205ee7bbd5db7ea15c2817943ed9ab399f028ed6a78c5cde294bc6666f5b30fc1c027e652facee4a60ba04701bfd65e367fa79ce48d92aba3f3b8f7499d9247f0240d92ef249478e316d904f413501ec082810f4aac3fc64d4154859d7c21c62aafae7031cf6f5e",     // String (required for sending data)
-    readKey: "4543c056ee4dcc133f981ca07c44b9ae2780ba81374dd266dad3808a13ad9fc84ef3616c9748f5d5764fd3f186b70c9db3ed7c8db46903103de2b600ce48441d2a9fd4c627e5b302ad75b12d55cd07852215f018e3072c6a5fe3f9af210e0b53fdf78e47819879dfe3a25402d00da0f4",       // String (required for querying data)
+    projectId: "5568e4bfd2eaaa3e1aaa8a0b",   // String (required always)
+    writeKey: "26ff004d48aca17b399923bc79b34c5b6ff3982f17ce12cc5345359449d1d0869c852aea9589a4608b4411147ef646332ccbb7189ca158ebb0e3445a4e94f6b8bf6249f2441d027317a231b3a24403cf18c4b6515d2ca00def9018c76f2d99571512b288907fd609f74c90d8b82596eb",     // String (required for sending data)
+    readKey: "74369a2efe3652a70f08937cba79043196f45ea1e12b8644c3ef6abcb1b1a5079c9be18da969d6a0237133753d3e2c88cfa7e4ec963eec7ed742a596678f617089a43bcdc93b6b29bd07e2c3cb1dc11ca76a2155c70249490676690de8cc2035f31064aa7c516095d4a76dee64243c28",       // String (required for querying data)
     protocol: "https",              // String (optional: https | http | auto)
     host: "api.keen.io/3.0",        // String (optional)
     requestType: "jsonp"            // String (optional: jsonp, xhr, beacon)
@@ -290,196 +290,114 @@
   
 
   //********** Listeners **********//
-  $( "#distraction_eyewear" ).on( "click", recordEyewear);
-  $( "#distraction_accessories" ).on( "click", recordAccessories);
-  $( "#distraction_popmusic" ).on( "click", recordPop);
-  $( "#distraction_travel" ).on( "click", recordTravel);
-  $( "#distraction_politics" ).on( "click", recordPolitics);
-  $( "#footware_first" ).on( "click", recordFootware);
-  $( "#foodie_first" ).on( "click", recordFoodie);
-  $( "#chairs_first" ).on( "click", recordChairs);
+  $("#learn_more").on("click", recordLearnmore);
+  $("#musicians").on("click", recordMusicians);
+  $("#charities").on("click", recordCharities);
+  $("#fans").on("click", recordFans);
+  $("#envision").("click", recordEnvision);
 
-  //********** Goal **********//
-  $( ".cta-goal" ).on( "click", recordGoal);
+  $( "#distraction_eyewear" ).on( "click", recordEyewear1);
 
-  //badness
-  $("#big_bad_delete").on("click", deleteKeenData);
 
 
   
 
   //********** CTAs as Data Objects **********//
 
-  function recordEyewear(){
+  function recordLearnmore(){
     // Create a data object with the properties you want to send
-    var recordEyewear = {
-      item: "recordEyewear",
+    var recordLearnmore = {
+      item: "recordLearnmore",
       referrer: document.referrer,
       keen: {
         timestamp: new Date().toISOString()
       }
-    };
+    }
 
-    // Send it to the collection
-    client.addEvent("ctas", recordEyewear, function(err, res){
+    //Send it to the collection
+    client.addEvent("recordLearnmore", recordLearnmore, function(err, res){
     });
   };
 
-  function recordAccessories(){
+  function recordMusicians(){
     // Create a data object with the properties you want to send
-    var recordAccessories = {
-      item: "recordAccessories",
+    var recordMusicians = {
+      item: "recordMusicians",
       referrer: document.referrer,
       keen: {
         timestamp: new Date().toISOString()
       }
-    };
+    }
 
-    // Send it to the collection
-    client.addEvent("ctas", recordAccessories, function(err, res){
+    //Send it to the collection
+    client.addEvent("recordMusicians", recordMusicians, function(err, res){
     });
   };
 
-  function recordPop(){
+  function recordCharities(){
     // Create a data object with the properties you want to send
-    var recordPopMusic = {
-      item: "recordPop",
+    var recordCharities = {
+      item: "recordCharities",
       referrer: document.referrer,
       keen: {
         timestamp: new Date().toISOString()
       }
-    };
+    }
 
-    // Send it to the collection
-    client.addEvent("ctas", recordPop, function(err, res){
+    //Send it to the collection
+    client.addEvent("recordCharities", recordCharities, function(err, res){
     });
   };
 
-  function recordTravel(){
+  function recordFans(){
     // Create a data object with the properties you want to send
-    var recordTravel = {
-      item: "recordTravel",
+    var recordFans = {
+      item: "recordFans",
       referrer: document.referrer,
       keen: {
         timestamp: new Date().toISOString()
       }
-    };
+    }
 
-    // Send it to the collection
-    client.addEvent("ctas", recordTravel, function(err, res){
+    //Send it to the collection
+    client.addEvent("recordFans", recordFans, function(err, res){
     });
   };
 
-  function recordPolitics(){
+  function recordEnvision(){
     // Create a data object with the properties you want to send
-    var recordPolitics = {
-      item: "recordPolitics",
-      referrer: document.referrer,
-      category: "ctas",
-      keen: {
-        timestamp: new Date().toISOString()
-      }
-    };
-
-    // Send it to the collection
-    client.addEvent("ctas", recordPolitics, function(err, res){
-    });
-  };
-
-  function recordFootware(){
-    // Create a data object with the properties you want to send
-    var recordFootware = {
-      item: "recordFootware",
+    var recordEnvision = {
+      item: "recordEnvision",
       referrer: document.referrer,
       keen: {
         timestamp: new Date().toISOString()
       }
-    };
+    }
 
-    // Send it to the collection
-    client.addEvent("ctas", recordFootware, function(err, res){
+    //Send it to the collection
+    client.addEvent("recordEnvision", recordEnvision, function(err, res){
     });
   };
 
-  function recordFoodie(){
-    // Create a data object with the properties you want to send
-    var recordFoodie = {
-      item: "recordFoodie",
-      referrer: document.referrer,
-      keen: {
-        timestamp: new Date().toISOString()
-      }
-    };
 
-    // Send it to the collection
-    client.addEvent("ctas", recordFoodie, function(err, res){
-    });
-  };
 
-  function recordChairs(){
-    // Create a data object with the properties you want to send
-    var recordChairs = {
-      item: "recordChairs",
-      referrer: document.referrer,
-      keen: {
-        timestamp: new Date().toISOString()
-      }
-    };
-
-    // Send it to the collection
-    client.addEvent("ctas", recordChairs, function(err, res){
-    });
-  };
 
 
   
 
-  //********** Recording Goal **********//
-
-  function recordGoal(){
-    // Create a data object with the properties you want to send
-    var recordFoodie = {
-      item: "recordGoal",
-      referrer: document.referrer,
-      keen: {
-        timestamp: new Date().toISOString()
-      }
-    };
-
-    // Send it to the collection
-    client.addEvent("ctaGoal", recordFoodie, function(err, res){
-    });
-  };
-
-
-
-
-
-
   //********** Recording Clicks as Group **********//
-  // function recordAllEvents(){
-  //   var multipleEvents = {
-  //     "visitor_clicks": [
-  //       { item: "recordEyewear"},
-  //       { item: "recordAccessories"},
-  //       { item: "recordPop"},
-  //       { item: "recordTravel"},
-  //       { item: "recordPolitics"},
-  //       { item: "recordFootware"},
-  //       { item: "recordFoodie"},
-  //       { item: "recordChairs"}
-  //     ]
-  //   };
-  //   // Send multiple events to several collections
-  //   client.addEvents(visitor_clicks, function(err, res){
-  //     if (err) {
-  //       // there was an error!
-  //     }
-  //     else {
-  //       // see sample response below
-  //     }
-  //   });
-  // };
+  var multipleEvents = {
+    "visitor_clicks": [
+      { item: "recordLearnmore"},
+      { item: "recordMusicians"},
+      { item: "recordCharities"},
+      { item: "recordFans"},
+      { item: "recordEnvision"}
+    ]
+  };
+  // Send multiple events to several collections
+  client.addEvents(multipleEvents, function(err, res){
+  });
 
 
 
@@ -488,27 +406,26 @@
   //********** visualization **********//
   Keen.ready(function(){
 
-    //goal count//
+    //learn more count//
     var count = new Keen.Query("count", {
-      eventCollection: "ctaGoal"
+      eventCollection: "recordLearnmore"
     });
     client.draw(count, document.getElementById("my_chart"), {
       chartType: "metric",
-      title: "Total Times Goal Was Hit",
+      title: "Count: Learn More",
       colors: ["#49c5b1"]
     });
 
 
     //pie chart test//
-    var pie_clicks = new Keen.Query("count", {
-      eventCollection: "ctas",
+    var visitor_clicks = new Keen.Query("count", {
+      eventCollection: "visitor_clicks",
       groupBy: "item"
     });
-    client.draw(pie_clicks, document.getElementById("count-pageviews-piechart"), {
+    client.draw(visitor_clicks, document.getElementById("count-pageviews-piechart"), {
       chartType: "piechart",
-      title: "Clicks on CTAs"
+      title: "Clicks"
     });
-  
   });
 </script>
 </html>
