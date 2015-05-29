@@ -294,11 +294,27 @@
   $("#musicians").on("click", recordMusicians);
   $("#charities").on("click", recordCharities);
   $("#fans").on("click", recordFans);
-  $("#envision").("click", recordEnvision);
 
-  $( "#distraction_eyewear" ).on( "click", recordEyewear1);
+  //********** Goal **********//
+  $("#envision").( "click", recordGoal);
 
 
+
+  //********** Recording Goal **********//
+  function recordGoal(){
+    // Create a data object with the properties you want to send
+    var recordEnvision = {
+      item: "recordGoal",
+      referrer: document.referrer,
+      keen: {
+        timestamp: new Date().toISOString()
+      }
+    };
+
+    // Send it to the collection
+    client.addEvent("ctaGoal", recordEnvision, function(err, res){
+    });
+  };
 
   
 
@@ -383,18 +399,16 @@
 
   //********** visualization **********//
   Keen.ready(function(){
-    
-    //pie chart test//
-    var pie_clicks = new Keen.Query("count", {
-      eventCollection: "ctas",
-      groupBy: "item"
+    //goal count//
+    var count = new Keen.Query("count", {
+      eventCollection: "ctaGoal"
     });
-    client.draw(pie_clicks, document.getElementById("count-pageviews-piechart"), {
-      chartType: "piechart",
-      title: "Clicks on CTAs"
+    client.draw(count, document.getElementById("my_chart"), {
+      chartType: "metric",
+      title: "Total Times Goal Was Hit",
+      colors: ["#49c5b1"]
     });
-  
-  });
+  }
 
 </script>
 </html>
