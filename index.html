@@ -312,10 +312,10 @@
       keen: {
         timestamp: new Date().toISOString()
       }
-    }
+    };
 
-    //Send it to the collection
-    client.addEvent("recordLearnmore", recordLearnmore, function(err, res){
+    // Send it to the collection
+    client.addEvent("ctas", recordLearnmore, function(err, res){
     });
   };
 
@@ -327,29 +327,29 @@
       keen: {
         timestamp: new Date().toISOString()
       }
-    }
+    };
 
-    //Send it to the collection
-    client.addEvent("recordMusicians", recordMusicians, function(err, res){
+    // Send it to the collection
+    client.addEvent("ctas", recordMusicians, function(err, res){
     });
   };
 
   function recordCharities(){
     // Create a data object with the properties you want to send
-    var recordCharities = {
+    var recordLearnmore = {
       item: "recordCharities",
       referrer: document.referrer,
       keen: {
         timestamp: new Date().toISOString()
       }
-    }
+    };
 
-    //Send it to the collection
-    client.addEvent("recordCharities", recordCharities, function(err, res){
+    // Send it to the collection
+    client.addEvent("ctas", recordCharities, function(err, res){
     });
   };
 
-  function recordFans(){
+  function recordLearnmore(){
     // Create a data object with the properties you want to send
     var recordFans = {
       item: "recordFans",
@@ -357,75 +357,44 @@
       keen: {
         timestamp: new Date().toISOString()
       }
-    }
+    };
 
-    //Send it to the collection
-    client.addEvent("recordFans", recordFans, function(err, res){
+    // Send it to the collection
+    client.addEvent("ctas", recordFans, function(err, res){
     });
   };
 
   function recordEnvision(){
     // Create a data object with the properties you want to send
-    var recordEnvision = {
+    var recordLearnmore = {
       item: "recordEnvision",
       referrer: document.referrer,
       keen: {
         timestamp: new Date().toISOString()
       }
-    }
+    };
 
-    //Send it to the collection
-    client.addEvent("recordEnvision", recordEnvision, function(err, res){
+    // Send it to the collection
+    client.addEvent("ctas", recordEnvision, function(err, res){
     });
   };
-
-
-
-
-
-  
-
-  //********** Recording Clicks as Group **********//
-  var multipleEvents = {
-    "visitor_clicks": [
-      { item: "recordLearnmore"},
-      { item: "recordMusicians"},
-      { item: "recordCharities"},
-      { item: "recordFans"},
-      { item: "recordEnvision"}
-    ]
-  };
-  // Send multiple events to several collections
-  client.addEvents(multipleEvents, function(err, res){
-  });
-
-
 
 
 
   //********** visualization **********//
   Keen.ready(function(){
-
-    //learn more count//
-    var count = new Keen.Query("count", {
-      eventCollection: "recordLearnmore"
-    });
-    client.draw(count, document.getElementById("my_chart"), {
-      chartType: "metric",
-      title: "Count: Learn More",
-      colors: ["#49c5b1"]
-    });
-
-
+    
     //pie chart test//
-    var visitor_clicks = new Keen.Query("count", {
-      eventCollection: "visitor_clicks",
+    var pie_clicks = new Keen.Query("count", {
+      eventCollection: "ctas",
       groupBy: "item"
     });
-    client.draw(visitor_clicks, document.getElementById("count-pageviews-piechart"), {
+    client.draw(pie_clicks, document.getElementById("count-pageviews-piechart"), {
       chartType: "piechart",
-      title: "Clicks"
+      title: "Clicks on CTAs"
     });
+  
   });
+
 </script>
 </html>
