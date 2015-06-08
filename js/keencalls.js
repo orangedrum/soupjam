@@ -16,7 +16,7 @@
   $("#musicians").on("click", recordMusicians);
   $("#charities").on("click", recordCharities);
   $("#fans").on("click", recordFans);
-  $("#envision").("click", recordEnvision);
+  $("#envision").on("click", recordEnvision);
 
   $( "#distraction_eyewear" ).on( "click", recordEyewear1);
 
