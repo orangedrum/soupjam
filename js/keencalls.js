@@ -18,8 +18,6 @@
   $("#fans").on("click", recordFans);
   $("#envision").on("click", recordEnvision);
 
-  $( "#distraction_eyewear" ).on( "click", recordEyewear1);
-
 
 
   
