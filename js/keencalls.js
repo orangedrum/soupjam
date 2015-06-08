@@ -19,8 +19,6 @@
   $("#envision").on("click", recordEnvision);
 
 
-
-
   
 
   //********** CTAs as Data Objects **********//
